@@ -1,0 +1,59 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">Profile</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Medications</h3>
+               <hr>
+            </div>
+        </div>
+        <div class="row row-content">
+            <div class="col-md-8">
+                <div class="panel-group" id="accordion">
+                    <div ng-if="medications.length==0">
+                        <strong>No data available</strong>
+                    </div>
+                    <div ng-if="medications.length>0">
+                    <div ng-repeat="medication in medications">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#!/medications#collapse{{medication.orderedDate}}">Medication Date: {{medication.orderedDate | date}}</a>
+                            </h4>
+                          </div>
+                          <div id="collapse{{medication.orderedDate}}" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                        <div>
+                            <strong>Ordered by: </strong>
+                            
+                        </div>
+                        <div>
+                            <strong>Medication name: </strong>
+                            {{medication.medication}}
+                        </div>
+                        <div >
+                            <strong>Refills left: </strong>
+                            {{medication.refillsLeft}}
+                        </div>
+                        <div >
+                            <strong>Currently using: </strong>
+                            {{medication.refillsLeft}}
+                        </div>
+                      </div>
+                          </div>
+                        </div>
+                    </div>
+                </div> 
+                </div>
+                    
+
+            </div>
+             </div>
+        </div>
+
+      

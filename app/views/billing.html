@@ -1,0 +1,65 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">Insurance</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Insurance</h3>
+               <hr>
+            </div>
+        </div>
+        <div class="row row-content">
+            <div class="col-md-8">
+                <div class="panel-group" id="accordion">
+                    <div ng-if="bills.length==0">
+                        <strong>No data available</strong>
+                    </div>
+                    <div ng-if="bills.length>0">
+                    <div ng-repeat="bill in bills">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#!/billing#collapse{{bill.dateOfService}}">{{bill.dateOfService}}</a>
+                            </h4>
+                          </div>
+                          <div id="collapse{{bill.dateOfService}}" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                        <div>
+                            <strong>Provider: </strong>
+                            {{bill.provider}}
+                        </div>
+                        <div>
+                            <strong>Service Details: </strong>
+                            {{bill.serviceDetails}}
+                        </div>
+                        <div >
+                            <strong>Amount Billed: </strong>
+                            {{bill.amountBilled}}
+                        </div>
+                        <div>
+                            <strong>Copay Paid: </strong>
+                            {{bill.copayPaid}}
+                        </div>
+                       <div>
+                            <strong>Copay Due: </strong>
+                            {{bill.copayDue}}
+                        </div>
+                      </div>
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+                </div> 
+                    
+                   <!--<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#visit">Visit on {{visit.visitDate}}</button>-->
+
+
+            </div>
+             </div>
+        </div>
+
+      

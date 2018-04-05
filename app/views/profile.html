@@ -1,0 +1,96 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">User Profile</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>User Profile</h3>
+               <hr>
+            </div>
+        </div>
+        <div class="row row-content">
+        
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div>
+                <strong>Username: </strong>
+                    {{patient.username}}
+                </div>
+                <div>
+                    <strong>First Name: </strong>
+                    {{patient.firstName}}
+                </div>
+                <div >
+                    <strong>Middle Initial: </strong>
+                    {{patient.MI}}
+                </div>
+                <div>
+                    <strong>Last Name: </strong>
+                    {{patient.lastName}}
+                </div>
+                <div>
+                    <strong>Email: </strong>
+                    {{patient.email}}
+                </div>
+                <div>
+                    <strong>Gender: </strong>
+                    {{patient.gender}}
+                </div>
+                <div>
+                    <strong>Date of birth: </strong>
+                    {{patient.dob | myDateFormat }}
+                </div>
+                <div>
+                    <strong>Social Security Number: </strong>
+                    {{patient.ssn}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div ng-repeat="address in patient.addresses | orderBy:'displayOrder'">
+                <div><h3>{{address.label}} Address:</h3></div>
+                <div>
+                <strong>Street: </strong>
+                    {{address.street1}}
+                </div>
+                <div>
+                    <strong>Street2: </strong>
+                    {{address.street2}}
+                </div>
+                <div >
+                    <strong>City: </strong>
+                    {{address.city}}
+                </div>
+                <div>
+                    <strong>State: </strong>
+                    {{address.state}}
+                </div>
+                <div>
+                    <strong>Zip: </strong>
+                    {{address.zip}}
+                </div>
+                <div>
+                    <strong>Home Phone: </strong>
+                    {{address.homephone}}
+                </div>
+                <div>
+                    <strong>Mobile: </strong>
+                    {{address.mobile}}
+                </div>
+               
+            </div>
+            </div>
+        </div>
+       
+        </div>
+
+        <div class="col-md-8" ng-if="!showProfile">
+            <h4>Please login </h4>
+        </div>
+
+                
+    </div>
+

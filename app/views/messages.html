@@ -1,0 +1,61 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">Profile</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Messages</h3>
+               <hr>
+            </div>
+        </div>
+        <div class="row row-content">
+            <div class="col-md-8">
+                <div class="panel-group" id="accordion">
+                    <div ng-if="messages.length==0">
+                        <strong>No data available</strong>
+                    </div>
+                    <div ng-if="messages.length>0">
+                    <div ng-repeat="message in messages">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#!/messages#collapse{{message.date}}">Message Date: {{message.date | date}}</a>
+                            </h4>
+                          </div>
+                          <div id="collapse{{message.date}}" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                        <div>
+                            <strong>From: </strong>
+                            {{message.from}}
+                        </div>
+                        <div>
+                            <strong>To: </strong>
+                            {{message.to}}
+                        </div>
+                        <div >
+                            <strong>Subject: </strong>
+                            {{message.subject}}
+                        </div>
+                        <div>
+                            <strong>Message: </strong>
+                            {{message.message}}
+                        </div>
+                      </div>
+                          </div>
+                        </div>
+                    </div>
+                </div> 
+                </div>
+                    
+                   <!--<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#visit">Visit on {{visit.visitDate}}</button>-->
+
+
+            </div>
+             </div>
+        </div>
+
+      

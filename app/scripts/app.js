@@ -1,7 +1,8 @@
 'use strict';
+//var myApp = angular.module('patientPortalApp',[]);
 
-angular.module('patientPortalApp', ['ui.router','ngResource','ngDialog'])
-.config(function($stateProvider, $urlRouterProvider) {
+var myApp = angular.module('patientPortalApp', ['ui.router','ngResource','ngDialog']);
+myApp.config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
         
             // route for the home page

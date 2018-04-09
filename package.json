@@ -2,6 +2,11 @@
   "name": "patientPortal",
   "private": true,
   "devDependencies": {
+    "angular": "~1.5.5",
+    "angular-ui-router": "~1.0.3",
+    "angular-mocks": "~1.5.5",
+    "angular-resource": "~1.5.5",
+    "angular-route": "~1.5.5",
     "browser-sync": "^2.10.0",
     "del": "^2.0.2",
     "gulp": "^3.9.0",
@@ -28,8 +33,10 @@
   "engines": {
     "node": ">=0.10.0"
   },
-    "scripts": {
-  "start": "node ./app/scripts/app.js"
-}
-
+  "scripts": {
+    "start": "node ./app/scripts/app.js"
+  },
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
 }

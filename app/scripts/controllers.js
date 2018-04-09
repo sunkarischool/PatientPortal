@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('patientPortalApp')
+var myApp = angular.module('patientPortalApp',[]);
 
+//angular.module('patientPortalApp')
 
-.controller('ProfileController', ['$scope', 'profileFactory', 'AuthFactory','$stateParams', '$localStorage', function ($scope, profileFactory, AuthFactory, $stateParams, $localStorage ) {
+myApp.controller('ProfileController', ['$scope', 'profileFactory', 'AuthFactory','$stateParams', '$localStorage', function ($scope, profileFactory, AuthFactory, $stateParams, $localStorage ) {
 
     $scope.showProfile = false;
     $scope.message = "Loading ...";

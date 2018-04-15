@@ -1,10 +1,26 @@
 'use strict';
 
-var myApp = angular.module('patientPortalApp',[]);
+angular.module('patientPortalApp')
 
-//angular.module('patientPortalApp')
+//filters that are used to display dataa in certain format
+//DateFormat to display the date in MMM dd, yyyy format
+.filter('myDateFormat', function myDateFormat($filter){
+      return function(text){
+        var  tempdate= new Date(text.replace(/-/g,"/"));
+        return $filter('date')(tempdate, "MMM dd, yyyy");
+      }
+ })
 
-myApp.controller('ProfileController', ['$scope', 'profileFactory', 'AuthFactory','$stateParams', '$localStorage', function ($scope, profileFactory, AuthFactory, $stateParams, $localStorage ) {
+//yesNo filter to display the Boolean value as Yes or No
+.filter('yesNo', function() {
+    return function(input) {
+        return input ? 'Yes' : 'No';
+    }
+})
+
+//Controllers to handle the functionality behind various pages
+//ProfileController - handles profile page
+.controller('ProfileController', ['$scope', 'profileFactory', 'AuthFactory','$stateParams', '$localStorage', function ($scope, profileFactory, AuthFactory, $stateParams, $localStorage ) {
 
     $scope.showProfile = false;
     $scope.message = "Loading ...";
@@ -19,13 +35,7 @@ myApp.controller('ProfileController', ['$scope', 'profileFactory', 'AuthFactory'
     
 }])
 
-.filter('myDateFormat', function myDateFormat($filter){
-      return function(text){
-        var  tempdate= new Date(text.replace(/-/g,"/"));
-        return $filter('date')(tempdate, "MMM dd, yyyy");
-      }
- })
-
+//VisitController handles patient's visits to the doctor
 .controller('VisitController', ['$scope', '$state', '$stateParams', 'visitFactory', '$localStorage',  function ($scope, $state, $stateParams, visitFactory, $localStorage) {
 
     $scope.message = "Loading ...";
@@ -53,6 +63,35 @@ myApp.controller('ProfileController', ['$scope', 'profileFactory', 'AuthFactory'
     }
 ])
 
+//TestController handles patient's visits to the doctor
+.controller('TestController', ['$scope', '$state', '$stateParams', 'testFactory', '$localStorage',  function ($scope, $state, $stateParams, testFactory, $localStorage) {
+
+    $scope.message = "Loading ...";
+    
+    var pt = $localStorage.getObject("patientinfo");
+
+    if(pt){
+        $scope.patient = pt[0];
+        console.log($scope.patient);
+    }
+        
+    var tests = testFactory.query({
+            patientId:$scope.patient._id
+        })
+        .$promise.then(
+            function (response) {
+                console.log(response);
+                $scope.tests = response;
+            },
+            function (response) {
+                $scope.message = "Error: " + response.status + " " + response.statusText;
+            }
+        );
+
+    }
+])
+
+//BillingController handles billing to insurance
 .controller('BillingController', ['$scope', '$state', '$stateParams', 'billingFactory', '$localStorage',  function ($scope, $state, $stateParams, billingFactory, $localStorage) {
 
     $scope.message = "Loading ...";
@@ -79,6 +118,7 @@ myApp.controller('ProfileController', ['$scope', 'profileFactory', 'AuthFactory'
     }
 ])
 
+//InsurancesController handles insurance related information
 .controller('InsurancesController', ['$scope', '$state', '$stateParams', 'insuranceFactory', '$localStorage',  function ($scope, $state, $stateParams, insuranceFactory, $localStorage) {
 
     $scope.message = "Loading ...";
@@ -105,6 +145,7 @@ myApp.controller('ProfileController', ['$scope', 'profileFactory', 'AuthFactory'
     }
 ])
 
+//MessagesController handles messages to and from the doctor's office
 .controller('MessagesController', ['$scope', '$state', '$stateParams', 'messageFactory', '$localStorage',  function ($scope, $state, $stateParams, messageFactory, $localStorage) {
 
     $scope.message = "Loading ...";
@@ -131,6 +172,8 @@ myApp.controller('ProfileController', ['$scope', 'profileFactory', 'AuthFactory'
 
     }
 ])
+
+//MedicationsController handles all the medications prescribed to the patient
 .controller('MedicationsController', ['$scope', '$state', '$stateParams', 'medicationsFactory', '$localStorage', function ($scope, $state, $stateParams, medicationsFactory, $localStorage) {
 
     $scope.message = "Loading ...";
@@ -157,7 +200,7 @@ myApp.controller('ProfileController', ['$scope', 'profileFactory', 'AuthFactory'
     }
 ])
 
-
+//HeaderController handles the top menu
 .controller('HeaderController', ['$scope', '$state', '$rootScope', 'ngDialog', 'AuthFactory', function ($scope, $state, $rootScope, ngDialog, AuthFactory) {
 
     $scope.loggedIn = false;
@@ -194,6 +237,7 @@ myApp.controller('ProfileController', ['$scope', 'profileFactory', 'AuthFactory'
     
 }])
 
+//LoginController handles user login 
 .controller('LoginController', ['$scope', 'ngDialog', '$localStorage', 'AuthFactory', function ($scope, ngDialog, $localStorage, AuthFactory) {
     
     $scope.loginData = $localStorage.getObject('userinfo','{}');
@@ -214,6 +258,7 @@ myApp.controller('ProfileController', ['$scope', 'profileFactory', 'AuthFactory'
     
 }])
 
+//RegisterController hanldes user registration
 .controller('RegisterController', ['$scope', 'ngDialog', '$localStorage', 'AuthFactory', function ($scope, ngDialog, $localStorage, AuthFactory) {
     
     $scope.register={};

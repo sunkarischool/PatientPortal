@@ -26,17 +26,19 @@
                      <li ng-class="{active: stateis('app.contactus')}"><a ui-sref="app.contactus">
                      <i class="fa fa-envelope-o"></i> Contact</a></li>
                     <li ng-if="loggedIn" ng-class="{active: stateis('app.profile')}"><a ui-sref="app.profile">
-                     <i class="fa fa-envelope-o"></i> Profile</a></li>
+                     <i class="fa fa-user"></i> Profile</a></li>
                     <li ng-if="loggedIn" ng-class="{active: stateis('app.visits')}"><a ui-sref="app.visits">
-                     <i class="fa fa-envelope-o"></i> Visits</a></li>
+                     <i class="fa fa-stethoscope"></i> Visits</a></li>
+                    <li ng-if="loggedIn" ng-class="{active: stateis('app.tests')}"><a ui-sref="app.tests">
+                     <i class="fa fa-vial"></i> Tests</a></li>
                     <li ng-if="loggedIn" ng-class="{active: stateis('app.medications')}"><a ui-sref="app.medications">
-                     <i class="fa fa-envelope-o"></i> Medications</a></li>
+                     <i class="fa fa-medkit"></i> Medications</a></li>
                     <li ng-if="loggedIn" ng-class="{active: stateis('app.messages')}"><a ui-sref="app.messages">
                      <i class="fa fa-envelope-o"></i> Messages</a></li>
                     <li ng-if="loggedIn" ng-class="{active: stateis('app.insurance')}"><a ui-sref="app.insurance">
-                     <i class="fa fa-envelope-o"></i> Insurance</a></li>
+                     <i class="fa fa-shield"></i> Insurance</a></li>
                     <li ng-if="loggedIn" ng-class="{active: stateis('app.billing')}"><a ui-sref="app.billing">
-                     <i class="fa fa-envelope-o"></i> Billing</a></li>
+                     <i class="fa fa-money-bill-alt"></i> Billing</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-if="!loggedIn"><a ng-click="openLogin()">

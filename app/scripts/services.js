@@ -2,7 +2,9 @@
 
 angular.module('patientPortalApp')
 .constant("baseURL", "https://rest-server-patientportal.azurewebsites.net/")
+//.constant("baseURL", "https://localhost:4443/")
 
+//profileFactory
 .factory('profileFactory', ['$localStorage', '$resource', 'baseURL', function ($localStorage, $resource, baseURL) {
    
     return $resource(baseURL + "patients/:id", null, {
@@ -15,9 +17,8 @@ angular.module('patientPortalApp')
     
 }])
 
-
+//visitFactory
 .factory('visitFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
-
 
     return $resource(baseURL + "visits/:id", null, {
             'update': {
@@ -27,6 +28,18 @@ angular.module('patientPortalApp')
 
 }])
 
+//testFactory
+.factory('testFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+
+    return $resource(baseURL + "tests/:id", null, {
+            'update': {
+                method: 'PUT'
+            }
+        });
+
+}])
+
+//messageFactory
 .factory('messageFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
     return $resource(baseURL + "messages/:id", null, {
@@ -37,6 +50,7 @@ angular.module('patientPortalApp')
 
 }])
 
+//medicationsFactory
 .factory('medicationsFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
     return $resource(baseURL + "medications/:id", null, {
@@ -47,6 +61,7 @@ angular.module('patientPortalApp')
 
 }])
 
+//insuranceFactory
 .factory('insuranceFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
 
@@ -57,16 +72,19 @@ angular.module('patientPortalApp')
         });
 
 }])
+
+//billingFactory
 .factory('billingFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
 
-    return $resource(baseURL + "billing/:id", null, {
+    return $resource(baseURL + "bills/:id", null, {
             'update': {
                 method: 'PUT'
             }
         });
 
 }])
+//localStorage methods
 .factory('$localStorage', ['$window', function ($window) {
     return {
         store: function (key, value) {
@@ -87,6 +105,7 @@ angular.module('patientPortalApp')
     }
 }])
 
+//AuthFactory - handles login and registration
 .factory('AuthFactory', ['$resource', '$http', '$localStorage', '$rootScope', '$window', 'baseURL', 'ngDialog', function($resource, $http, $localStorage, $rootScope, $window, baseURL, ngDialog){
     
     var authFac = {};

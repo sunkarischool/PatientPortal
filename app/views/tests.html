@@ -1,0 +1,74 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">Tests</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Test Results</h3>
+               <hr>
+            </div>
+        </div>
+        <div class="row row-content">
+            <div class="col-md-8">
+                <div class="panel-group" id="accordion">
+                    <div ng-if="tests.length==0">
+                        <strong>No data available</strong>
+                    </div>
+                    <div ng-if="tests.length>0">
+                    <div ng-repeat="test in tests">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#/tests#collapse{{test.orderedDate}}">Ordered Date: {{test.orderedDate | date}}</a>
+                            </h4>
+                          </div>
+                          <div id="collapse{{test.orderedDate}}" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                        <div>
+                            <strong>Ordered by: </strong>
+                            {{test.orderedBy}}
+                        </div>
+                        <div>
+                            <strong>Test name: </strong>
+                            {{test.testName}}
+                        </div>
+                        <div >
+                            <strong>Test Result: </strong>
+                            {{test.testResult}}
+                        </div>
+                        <div >
+                            <strong>Images: </strong>
+                            <div ng-repeat="image in test.images">
+                                <ul>
+                                <div>
+                                    <strong>Image name: </strong>
+                                    {{image.imageName}}
+                                </div>
+                                <div>
+                                    <strong>Image type: </strong>
+                                    {{image.imageType}}
+                                </div>
+                                <div>
+                                    <strong>Image URL: </strong>
+                                    {{image.imageUrl}}
+                                </div>
+                                </ul>
+                            </div>
+                        </div>
+                      </div>
+                          </div>
+                        </div>
+                    </div>
+                </div> 
+                </div>
+                    
+
+            </div>
+             </div>
+        </div>
+
+      

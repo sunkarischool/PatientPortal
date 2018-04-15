@@ -4,11 +4,11 @@
             <div class="col-xs-12">
                <ul class="breadcrumb">
                    <li><a href="index.html">Home</a></li>
-                   <li class="active">Insurance</li>
+                   <li class="active">Billing</li>
                </ul>
             </div>
             <div class="col-xs-12">
-               <h3>Insurance</h3>
+               <h3>Billing</h3>
                <hr>
             </div>
         </div>
@@ -23,7 +23,7 @@
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#!/billing#collapse{{bill.dateOfService}}">{{bill.dateOfService}}</a>
+                              <a data-toggle="collapse" data-parent="#accordion" href="#/billing#collapse{{bill.dateOfService}}">Billing Date: {{bill.dateOfService | date}}</a>
                             </h4>
                           </div>
                           <div id="collapse{{bill.dateOfService}}" class="panel-collapse collapse in">
@@ -38,15 +38,15 @@
                         </div>
                         <div >
                             <strong>Amount Billed: </strong>
-                            {{bill.amountBilled}}
+                            {{bill.amountBilled/100 | currency}}
                         </div>
                         <div>
                             <strong>Copay Paid: </strong>
-                            {{bill.copayPaid}}
+                            {{bill.copayPaid/100 | currency}}
                         </div>
                        <div>
                             <strong>Copay Due: </strong>
-                            {{bill.copayDue}}
+                            {{bill.copayDue/100 | currency}}
                         </div>
                       </div>
                           </div>

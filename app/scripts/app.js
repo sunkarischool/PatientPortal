@@ -1,8 +1,6 @@
 'use strict';
-//var myApp = angular.module('patientPortalApp',[]);
-
-var myApp = angular.module('patientPortalApp', ['ui.router','ngResource','ngDialog']);
-myApp.config(function($stateProvider, $urlRouterProvider) {
+angular.module('patientPortalApp', ['ui.router','ngResource','ngDialog'])
+.config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
         
             // route for the home page
@@ -75,7 +73,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
                 }
             })
     
-            // route for the visits page
+            // route for the messages page
             .state('app.messages', {
                 url: 'messages',
                 views: {
@@ -104,6 +102,16 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
                     'content@': {
                         templateUrl : 'views/billing.html',
                         controller  : 'BillingController'
+                    }
+                }
+            })
+                // route for the tests page
+            .state('app.tests', {
+                url: 'tests',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/tests.html',
+                        controller  : 'TestController'
                     }
                 }
             })

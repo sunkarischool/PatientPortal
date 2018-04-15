@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('patientPortalApp')
-.constant("baseURL", "https://rest-server-patientportal.azurewebsites.net/")
+//.constant("baseURL", "https://rest-server-patientportal.azurewebsites.net/")
+.constant("baseURL", "https://peaceful-lake-93230.herokuapp.com/")
 //.constant("baseURL", "https://localhost:4443/")
 
 //profileFactory
